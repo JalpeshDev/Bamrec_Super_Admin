@@ -13532,6 +13532,11 @@
   "resolved" "https://registry.npmjs.org/stylis/-/stylis-4.0.13.tgz"
   "version" "4.0.13"
 
+"sunflower-antd@^1.0.0-beta.3":
+  "integrity" "sha512-SAdjHgNemTFNxUF/QJ2KdC0x6wWpY1EsMJMo+F5KIHCDRsUUahjAIldoK+ejH00rPgUoCOhAHQ/ob/J7eyZ5qg=="
+  "resolved" "https://registry.npmjs.org/sunflower-antd/-/sunflower-antd-1.0.0-beta.3.tgz"
+  "version" "1.0.0-beta.3"
+
 "supercluster@^7.0.0", "supercluster@^7.1.0":
   "integrity" "sha512-GhKkRM1jMR6WUwGPw05fs66pOFWhf59lXq+Q3J3SxPvhNcmgOtLRV6aVQPMRsmXdpaeFJGivt+t7QXUPL3ff4g=="
   "resolved" "https://registry.npmjs.org/supercluster/-/supercluster-7.1.4.tgz"

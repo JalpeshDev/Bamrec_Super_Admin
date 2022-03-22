@@ -70,13 +70,13 @@ const Oraganazation = ({ match }: any) => {
     <div>
       <Card>
             <Row>
-            <Col span={12}> <Typography className={'title-fontStyle '}>
-              Organizations
+            <Col span={12}> 
+              <Typography className={'title-fontStyle '}>
+                Organizations
               </Typography>
             </Col>          
             <Col style={{display:"flex",flex:6}}>
                     <div className={'user-search'} style={{justifyContent:"center", alignSelf:"center"}}>
-                  
                         <HeaderSearch                        
                             placeholder="Search For Organizations"
                         />   

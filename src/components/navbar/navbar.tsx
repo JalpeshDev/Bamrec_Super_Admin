@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Row, Col, Avatar, Dropdown, Typography } from 'antd';
 import {
     LogoutOutlined,
@@ -16,8 +16,8 @@ import SuperADMIN from '../../assets/Images/SuperADMIN.png'
 import Dashboard from '../../pages/Dashboard';
 import AppLayout from '../layout/layout';
 import App from '../../App';
+import New  from "../../pages/New-Btn/New";
 import 'antd/dist/antd.css';
- 
 import Analytics from "../../assets/Images/Wallet.svg"
 import JobRequest from "../../assets/Images/Work.svg"
 import Newspaper from "../../assets/Images/Newspaper.svg"
@@ -25,15 +25,28 @@ import Calendar from "../../assets/Images/Calendar.svg"
 import FamilyUser from "../../assets/Images/3 User.svg"
 import Medal from "../../assets/Images/Medal.svg"
 import Buildings from "../../assets/Images/Buildings.svg"
+import Oraganazation from '../../pages/Oraganazation';
+import NewModel from '../../pages/Models/NewModel';
+
 const { Header, Content, Footer, Sider } = Layout;
+
+// const btnclick = () => {
+//     debugger
+//     return(
+      
+//     )    
+// };
+
 const NavBar: React.FC<{}> = (props) => {
     const history = useHistory();
     const { children } = props;
     const dispatch = useDispatch();
+    const [isVisible, setVisible] = useState(false);
     const { user } = useSelector((state: any) => state.auth);
     console.log("chikderen is ", children);
     return (
         <Layout>
+           { isVisible && <NewModel Visible={() => {setVisible(false)}}  />}
             <Header
                 style={{ backgroundColor: "white", display:"flex", flex:1 }}
             >
@@ -54,8 +67,11 @@ const NavBar: React.FC<{}> = (props) => {
                     </Col>
                     <Col style={{display:"flex",flex:8}} >
                         <div className={'user-title'} >
-                            <Button shape="round" className='nav-btn'>
+                            <Button shape="round" className='nav-btn'
+                               onClick={() =>setVisible(!isVisible)}
+                            >
                                 <PlusOutlined /> New
+                                 
                             </Button>
                             <div className='nav-btn-bell' >
                             <BellOutlined type="primary">
