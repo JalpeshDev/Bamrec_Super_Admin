@@ -225,74 +225,12 @@ const Dashboard = () => {
               </Card>
             </Col>
             <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12} style={{ justifyContent: "flex-end" }}>
-                    <h2>Kides</h2>
-                  </Col>
-                  <Col span={12} style={{ alignContent: "flex-end" }}>
-                    <h2>30</h2>
-                  </Col>
-                  <Row>
-                    <Col>
-                  <Tabs defaultActiveKey="1" onChange={callback}>
-                    <TabPane tab="Gender" key="1" style={{}}>
-                      <Row>
-                        <Col style={{ alignItems: "center" }}>
-                          <ColumnPlot />
-                        </Col>
-                      </Row>
-                    </TabPane>
-                    <TabPane tab="Age" key="2">
-                    <Row>
-                        <Col style={{ alignItems: "center" }}>
-                          <Progressbar />
-                        </Col>
-                      </Row>
-                    </TabPane>
-                  </Tabs>
-                  </Col>
-                  </Row>
-                </Row>
-
-              </Card>
+             
             </Col>
           </Row>
         </Card>
           <div style={{ marginTop: 20 }}>
-          <Card>
-            <Row>
-              <Col span={12}>
-                <h2>Capacity</h2>
-              </Col>
-              <Col span={12} style={{alignContent:"flex-end"}}>
-                    <Dropdown overlay={menu}>
-                      <Button>
-                        Select mentors <DownOutlined />
-                      </Button>
-                    </Dropdown>
-                  </Col>
-              </Row>
-             
-              <Tabs defaultActiveKey="1" onChange={callback}>
-                <TabPane tab="Mentors" key="1" style={{}}>
-                  <Row>
-                    <Col style={{width:"1029px",height:400}}>
-                    <Capacity/>
-                    </Col>
-                  </Row>
-                </TabPane>
-                <TabPane tab="Skills" key="2">
-                  <Card>
-                <Row>
-                    <Col style={{width:"1029px",height:400}}>
-                      <Skills/>
-                    </Col>
-                  </Row>
-                  </Card>
-                </TabPane>
-              </Tabs>
-          </Card>
+      
           </div>   
       </div>
     </AppLayout>
