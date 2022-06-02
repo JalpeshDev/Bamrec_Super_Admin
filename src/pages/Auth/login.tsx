@@ -1,109 +1,154 @@
-import React from "react";
-import { Typography, Form, Row, Col, Input, Checkbox, Button, Tabs } from "antd";
+import React, { useState } from "react";
+import { Typography, Form, Row, Col, Input, Checkbox, Button, Tabs, message } from "antd";
 import { UserOutlined, LockOutlined, GlobalOutlined } from '@ant-design/icons';
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router";
 import { useDispatch } from 'react-redux';
-import authActions from '../../Redux/Auth/action'
+import Dashboard from "../Dashboard";
+import bamreclogo from "../../assets/Images/bamrec-logo.svg"
+import facebookIcon from "../../assets/Images/facebook.svg"
+import appleIcon from "../../assets/Images/appleIcon.svg"
+import googleIcon from "../../assets/Images/google.svg"
+import Signup from "./Signup";
 
-const { TabPane } = Tabs;
 
 const Login = () => {
     const { t, i18n, } = useTranslation();
     const dispatch = useDispatch();
-
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+    const [errormsg, setErrormsg] = useState('')
+    const history = useHistory();
+    const loginData = {
+        userId: "admin@gmail.com",
+        password: "admin@123"
+    }
+    const [form] = Form.useForm();
+    const success = () => {
+        message.success('Login Sucessfully. !');
+      };
+      const error = () => {
+        message.error('This is an error message');
+      };
     const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
-        dispatch(authActions.loginRequest(values))
+        console.log("Email,password",email,password);
+        if(loginData.userId == values.email && loginData.password == values.password) {
+            history.push(`/Dashboard`)
+        }
+        else {
+            
+            alert("Invalid UserName and Password")
+            
+        }
     };
-
     return (
         <>
-            <div className={'lang-icon-block'}>
-            </div>
             <div className={'login-form-container'}>
-                <div>
-                    <Row justify="center" align="middle">
-                        <Col>
-                            <Typography className={'title-fontStyle text-center'}>
-                                BAMREC ADMIN
-                            </Typography>
-                        </Col>
-                    </Row>
-                </div>
-                <div className={'margin-20'}>
-                    <Row justify="center" align="middle">
-                        <Tabs >
-                            <TabPane tab="IDENTIFIANTS" key="1">
-                                <Form
-                                    name="normal_login"
-                                    className="login-form"
-                                    initialValues={{ remember: true }}
-                                    onFinish={onFinish}
-                                >
-                                    <Form.Item
-                                        name="username"
-                                        rules={[{ required: true, message: 'Please input your Username!' }]}
+                <Row style={{ width: "100%" }} >
+                    <Col md={24} lg={10} xl={10} style={{ background: "#fff" }} >
+                        <div className="left-login-form">
+                            <div>
+                                <Row>
+                                    <Col>
+                                        <Typography className={'title-fontStyle text-center'}>
+                                            <img src={bamreclogo} />
+                                        </Typography>
+                                    </Col>
+                                </Row>
+                            </div>
+                            <div className={'margin-20'}>
+                                <a>
+                                    <h1>
+                                        <b>
+                                            Hi, Welcome back!
+                                        </b>
+                                    </h1>
+                                </a>
+                                <div>
+                                    <Form
+                                        form={form}
+                                        name="register"
+                                        onFinish={onFinish}
                                     >
-                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name="email"
-                                        rules={[{ required: true, message: 'Please input your Email!' },
-                                        { type: "email", message: 'Please input valid Email' }]}
-                                    >
-                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name="password"
-                                        rules={[{ required: true, message: 'Please add a password' },
-                                        { min: 6, message: 'Password must have a minimum length of 6' },
-                                            // {
-                                            //     pattern: new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'),
-                                            //     message: 'Password must contain at least one lowercase letter, uppercase letter, number, and special character'
-                                            // }
-                                        ]}
-                                    >
-                                        <Input
-                                            prefix={<LockOutlined className="site-form-item-icon" />}
-                                            type="password"
-                                            placeholder="Password"
-                                        />
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Form.Item name="remember" valuePropName="checked" noStyle>
-                                            <Checkbox>Remember me</Checkbox>
+                                        <span>Email</span>
+                                        <Form.Item
+                                            name="email"
+                                            
+                                            rules={[
+                                                {
+                                                    type: 'email',
+                                                    message: 'The input is not valid E-mail!',
+                                                },
+                                                {
+                                                    required: true,
+                                                    message: 'Please input your E-mail!',
+                                                },
+                                            ]}
+                                        >
+                                            <Input />
                                         </Form.Item>
+                                        <span>Password</span>
+                                        <Form.Item
+                                            name="password"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Please input your password!',
+                                                },
+                                            ]}
+                                        >
+                                        <Input.Password />
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Button type="primary" htmlType="submit" className="login-form-button"> 
+                                               <span style={{color:"white", fontSize:"14px",alignItems:"center"}}>Login</span> 
+                                            </Button>
+                                        </Form.Item>
+                                        <div className="break-line">
+                                            or
+                                        </div>
 
-                                        <a className="login-form-forgot" href="">
-                                            Forgot password
-                                        </a>
-                                    </Form.Item>
+                                        <Row className="social-btn-group">
+                                            <div className="social-btn">
+                                                <a href="" className="facebook-btn">
+                                                    <img src={googleIcon} />
+                                                    <span>Login with Google</span>
 
-                                    <Form.Item>
-                                        <Button type="primary" htmlType="submit" className="login-form-button">
-                                            Log in
-                                        </Button>
+                                                </a>
+                                            </div>
+                                            <div className="social-btn">
+                                                <a href="" className="facebook-btn">
+                                                    <img src={appleIcon} />
+                                                    <span>Login with Apple</span>
+                                                </a>
+                                            </div>
+                                            <div className="social-btn">
+                                                <a href="" className="facebook-btn">
+                                                    <img src={facebookIcon} />
+                                                    <span> Login with Facebook </span>
+                                                </a>
+                                            </div>
+                                        </Row>
+                                        <Row className="text-center signup-link" justify="center">
+                                            <p>Don’t have account? <a href="/Signup">Sign Up</a></p>
+                                            <Button>
+                                                
+                                            </Button>
+                                            
+                                        </Row>
+                                    </Form>  
+                                </div>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col md={24} lg={14} xl={14}>
+                        <div className="right-col-blue">
 
-                                    </Form.Item>
-                                </Form>
-                            </TabPane>
-                        </Tabs>
-                    </Row>
-                </div>
-                <div className={'margin-20'}>
-                    <Row justify="center" align="middle">
+                        </div>
+                    </Col>
 
-                    </Row>
-                </div>
-            </div>
-            <div className={'login-footer'}>
-                <Typography>
-                    System state
-                </Typography>
-                <Typography className={'sub-heading'}>
-
-                    Daven Martel,{new Date().getFullYear()}. All rights reserved
-                </Typography>
+                </Row>
             </div>
         </>
     )

@@ -10,6 +10,7 @@ import { getToken, clearToken } from '../../helper/utility';
  */
 export function* loginRequest({ payload }) {
     try {
+        console.log("saga")
         const { data } = yield axiosPost(payload, `login`);
         let { token } = data.data.user;
         if (token) {

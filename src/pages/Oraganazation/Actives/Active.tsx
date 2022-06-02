@@ -1,185 +1,178 @@
 import React from "react";
-import { Card } from 'antd';
-import { Menu, Dropdown, Button, message, Space, Tooltip } from 'antd';
-import { Tabs } from 'antd';
-
-import { Row, Col, Avatar, Typography } from 'antd';
-import { Table } from 'antd';
+import { Avatar, Popconfirm } from "antd";
+import { Menu, Dropdown, message, Space } from "antd";
+import { Row } from "antd";
+import { Table } from "antd";
+import { DeleteOutlined, EditOutlined, DownOutlined } from "@ant-design/icons";
+import active from "../../../assets/Images/activeGreen.png";
+import { history } from "../../../Redux/store";
+import actions from "../../../Redux/Organization/action";
+import { useDispatch } from "react-redux";
+import pendingImg from "../../../assets/Images/pending.svg";
+import partnerImg from "../../../assets/Images/partner.svg";
+import { UserOutlined } from "@ant-design/icons";
+import { Modal, Button } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
+import Item from "antd/lib/list/Item";
 
+const { confirm } = Modal;
 
-type DataType = "Male" | "Female";
+function Active(props: any) {
+  const dispatch = useDispatch();
+  const menu = (
+    <Menu onClick={props.handleMenuClick}>
+      <Menu.Item key="active">
+        <img src={active}></img> Active
+      </Menu.Item>
+      <Menu.Item key="pending">
+        <img src={pendingImg}></img> Pending
+      </Menu.Item>
+      <Menu.Item key="partner">
+        <img src={partnerImg}></img> Partner
+      </Menu.Item>
+    </Menu>
+  );
 
-interface PieChartData {
-  type: DataType;
-  value: number;
-}
-const columnss: { title: string, dataIndex: string, filters: Array<{ text: string, value: string }> }[] = [
-    {
-      title: 'Organization Name',
-      dataIndex: 'name',
-      filters: [
-        {
-          text: 'Joe',
-          value: 'Joe',
-        },
-        {
-          text: 'Jim',
-          value: 'Jim',
-        }
+  function showConfirm(Item: any) {
+    confirm({
+      title: "Do you Want to delete these Organization?",
+      icon: <ExclamationCircleOutlined />,
+      okText: "Yes, Delete",
+      cancelText: "No, Cancel",
+      okType: "danger",
+      onOk() {
+        props.deleteActiveRecord(Item);
+        message.success("Deleted Completed!");
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  }
+
+  const newArray = props.activeData?.map((item: any) => {
+    return {
+      key: item.id,
+      organizationName: (
+        <div
+          onClick={() => {
+            history.push({
+              pathname: "/organization-profile",
+              state: JSON.stringify(item.basic),
+            });
+          }}
+        >
+          <Space>
+            <Avatar
+              size={28}
+              icon={<img src={item.organizationProfile}></img>}
+            />
+            {item.basic.organizationName}
+          </Space>
+        </div>
+      ),
+      firstname: item.basic.firstname,
+      email: item.basic.email,
+      address: item.basic.address,
+      phone: item.basic.phone,
+      EstablishedDate: item.details.EstablishedDate,
+      about: item.details.about,
+      facebook: item.details.facebook,
+      twitter: item.details.twitter,
+      website: item.details.website,
+      referralType: "Person Name",
+      dateApplied: moment(item.details.EstablishedDate).format("MM/DD/YYYY"),
+      status: (
+        <Dropdown overlay={menu}>
+          <p
+            onMouseOver={(e) => {
+              dispatch({
+                type: actions.CURRENT_ORGANIZATION_DATA,
+                payload: item,
+              });
+              console.log(item);
+            }}
+          >
+            <img src={active}></img> Active <DownOutlined />
+          </p>
+        </Dropdown>
+      ),
+      action: [
+        <Space>
+          <EditOutlined
+            onClick={() => {
+              dispatch({
+                type: actions.CURRENT_ORGANIZATION_DATA,
+                payload: item,
+              });
+              dispatch({ type: actions.MODAL_VISIBLE, payload: true });
+            }}
+          />
+          <DeleteOutlined
+            onClick={(e) => {
+              showConfirm(item);
+            }}
+          />
+        </Space>,
       ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      //   onFilter: (value, record) => record.name.indexOf(value) === 0,
-      //   sorter: (a, b) => a.name.length - b.name.length,
+    };
+  });
+
+  const columnss = [
+    {
+      title: "Organization Name",
+      dataIndex: "organizationName",
+      key: "organizationName",
     },
     {
-      title: 'Admin Name',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'Albert Flores',
-          value: 'Albert Flores',
-        },
-        {
-          text: 'Albert Flores',
-          value: 'Albert Flores',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Admin Name",
+      dataIndex: "firstname",
+      key: "firstname",
     },
     {
-      title: 'Refferal type',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'test@abcd.com',
-          value: 'test@abcd.com',
-        },
-        {
-          text: 'test22@abcd.com',
-          value: 'test22@abcd.com',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Refferal type",
+      dataIndex: "referralType",
+      key: "referralType",
     },
     {
-      title: 'Date applied',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'May 29, 2021',
-          value: 'May 29, 2021',
-        },
-        {
-          text: 'May 29, 2021',
-          value: 'May 29, 2021',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Date applied",
+      dataIndex: "dateApplied",
+      key: "dateApplied",
     },
     {
-      title: 'Status',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'Pending',
-          value: 'Pending',
-        },
-        {
-          text: 'Pending',
-          value: 'Pending',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
     },
     {
-      title: 'Actions',
-      dataIndex: 'Actions',
-      filters: [
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Actions",
+      dataIndex: "action",
+      key: "action",
     },
   ];
 
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      Refferal: 32,
-      email: 'New York No. 1 Lake Park',
+  const rowSelection = {
+    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+      props.setSelectedRows(selectedRows);
     },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'test -1',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'test -2',
-    },
-    {
-      key: '4',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-  ];
-const columns = [
-    {
-        title: 'Organization Name',
-        dataIndex: 'Name',
-        render: (text: any) => <>{moment(text).format('DD/MM/YYYY')}</>
-    },
-    {
-        title: 'Admin Name',
-        dataIndex: 'adminName',
-        // render: (text: any, record: any) => <a onClick={() => history.push(`/activities/activity-details/${record._id}`)}>{text}</a>
+    getCheckboxProps: (record: any) => ({
+      name: record.name,
+    }),
+  };
 
-    },
-    {
-        title: 'Refferal type',
-        dataIndex: 'refferaltype',
-    },
-    {
-        title: 'Date applied',
-        dataIndex: 'date',
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status',
-        render: (text: any) => <>{text.length}</>
-    },
-    {
-      title: 'Actions',        
-  },
-
-];
-
-const tableColumns = columns.map((item) => ({
-    ...item,
-}));
-
-function Active() {
   return (
-    <div style={{ marginTop: 20 }}>
-    <Card>
-      <Row>
-        <h3><b>Organizaions</b></h3>
-      </Row>
+    <div>
       <Row>
         <Table
+          rowSelection={rowSelection}
           columns={columnss}
-          dataSource={data}
-        // onChange={onChange} 
+          dataSource={newArray}
+          className="table-responsive"
         />
       </Row>
-    </Card>
-  </div>
-      );
+    </div>
+  );
 }
 
 export default Active;

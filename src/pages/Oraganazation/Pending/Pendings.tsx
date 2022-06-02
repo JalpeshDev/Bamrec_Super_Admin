@@ -1,185 +1,167 @@
 import React from "react";
-import { Card } from 'antd';
-import { Menu, Dropdown, Button, message, Space, Tooltip } from 'antd';
-import { Tabs } from 'antd';
+import { Card } from "antd";
+import { Menu, Dropdown, message, Space } from "antd";
+import { DeleteOutlined, EditOutlined, DownOutlined } from "@ant-design/icons";
+import { Row, Popconfirm } from "antd";
+import { Table } from "antd";
+import actions from "../../../Redux/Organization/action";
+import pendingImg from "../../../assets/Images/pending.svg";
+import partnerImg from "../../../assets/Images/partner.svg";
+import active from "../../../assets/Images/activeGreen.png";
+import { Modal, Button } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { useDispatch } from "react-redux";
+const { confirm } = Modal;
+// type DataType = "Male" | "Female";
 
-import { Row, Col, Avatar, Typography } from 'antd';
-import { Table } from 'antd';
-import moment from "moment";
+// interface PieChartData {
+//   type: DataType;
+//   value: number;
+// }
 
+function Pendings(props: any) {
+  const dispatch = useDispatch();
 
-type DataType = "Male" | "Female";
+  const menu = (
+    <Menu onClick={props.handleMenuClick}>
+      <Menu.Item key="active">
+        <img src={active}></img> Active
+      </Menu.Item>
+      <Menu.Item key="pending">
+        <img src={pendingImg}></img> Pending
+      </Menu.Item>
+      <Menu.Item key="partner">
+        <img src={partnerImg}></img> Partner
+      </Menu.Item>
+    </Menu>
+  );
+  function showConfirm(Item: any) {
+    confirm({
+      title: 'Do you Want to delete these Organization?',
+      // content: 'Some descriptions',
+      okText: 'Yes, Delete',
+      cancelText: 'No, Cancel',
+      okType: 'danger',
+      onOk() {
+        props.deleteActiveRecord(Item);
+        message.success('Deleted Completed!')
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  }
+  const newArray = props.data.map((item: any) => {
+    return {
+      key: item.id,
+      organizationName: item.basic.organizationName,
+      firstname: item.basic.firstname,
+      email: item.basic.email,
+      address: item.basic.address,
+      phone: item.basic.phone,
+      EstablishedDate: item.details.EstablishedDate,
+      about: item.details.about,
+      facebook: item.details.facebook,
+      twitter: item.details.twitter,
+      website: item.details.website,
+      referralType: "Person Name",
+      dateApplied: "May 29, 2021",
+      status: (
+        <Dropdown overlay={menu}>
+          <p
+            onMouseOver={(e) => {
+              dispatch({
+                type: actions.CURRENT_ORGANIZATION_DATA,
+                payload: item,
+              });
+            }}
+          >
+            <img alt="alt" src={pendingImg}></img> Pending <DownOutlined />
+          </p>
+        </Dropdown>
+      ),
+      action: [
+        <Space>
+          <EditOutlined
+            onClick={() => {
+              dispatch({
+                type: actions.CURRENT_ORGANIZATION_DATA,
+                payload: item,
+              });
+              dispatch({ type: actions.MODAL_VISIBLE, payload: true });
+            }}
+          />
+          {/* <Popconfirm
+            title="Are you sure to delete this task?"
+            onConfirm={() => {
+              props.deletePendingRecord(item);
+              message.success("deleted");
+            }}
+            onCancel={() => {
+              message.error("Click on No");
+            }}
+            okText="Yes"
+            cancelText="No"
+          > */}
+          <DeleteOutlined onClick={(e) => {
+            showConfirm(item)
+          }}
+          />
+          {/* </Popconfirm> */}
+        </Space>,
+      ],
+    };
+  });
+  const columnss = [
+    {
+      title: "Name",
+      dataIndex: "organizationName",
+      key: "organizationName"
+    },
+    {
+      title: "Refferal",
+      dataIndex: "firstname",
 
-interface PieChartData {
-  type: DataType;
-  value: number;
-}
-const columnss: { title: string, dataIndex: string, filters: Array<{ text: string, value: string }> }[] = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      filters: [
-        {
-          text: 'Joe',
-          value: 'Joe',
-        },
-        {
-          text: 'Jim',
-          value: 'Jim',
-        }
-      ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      //   onFilter: (value, record) => record.name.indexOf(value) === 0,
-      //   sorter: (a, b) => a.name.length - b.name.length,
     },
     {
-      title: 'Refferal',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'Albert Flores',
-          value: 'Albert Flores',
-        },
-        {
-          text: 'Albert Flores',
-          value: 'Albert Flores',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Refferal type",
+      dataIndex: "referralType",
     },
     {
-      title: 'Refferal type',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'test@abcd.com',
-          value: 'test@abcd.com',
-        },
-        {
-          text: 'test22@abcd.com',
-          value: 'test22@abcd.com',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Date applied",
+      dataIndex: "dateApplied",
     },
     {
-      title: 'Date applied',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'May 29, 2021',
-          value: 'May 29, 2021',
-        },
-        {
-          text: 'May 29, 2021',
-          value: 'May 29, 2021',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Status",
+      dataIndex: "status",
     },
     {
-      title: 'Status',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'Pending',
-          value: 'Pending',
-        },
-        {
-          text: 'Pending',
-          value: 'Pending',
-        },
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
-    },
-    {
-      title: 'Actions',
-      dataIndex: 'Actions',
-      filters: [
-      ],
-      //   onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Actions",
+      dataIndex: "action",
     },
   ];
 
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      Refferal: 32,
-      email: 'New York No. 1 Lake Park',
+  const rowSelection = {
+    onChange: (selectedRowKeys: React.Key[], selectedRows: any[]) => {
+      props.setSelectedRows(selectedRows);
     },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'test -1',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'test -2',
-    },
-    {
-      key: '4',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-  ];
-const columns = [
-    {
-        title: 'Organization Name',
-        dataIndex: 'Name',
-        render: (text: any) => <>{moment(text).format('DD/MM/YYYY')}</>
-    },
-    {
-        title: 'Admin Name',
-        dataIndex: 'adminName',
-        // render: (text: any, record: any) => <a onClick={() => history.push(`/activities/activity-details/${record._id}`)}>{text}</a>
+    getCheckboxProps: (record: any) => ({
+      name: record.name,
+    }),
+  };
 
-    },
-    {
-        title: 'Refferal type',
-        dataIndex: 'refferaltype',
-    },
-    {
-        title: 'Date applied',
-        dataIndex: 'date',
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status',
-        render: (text: any) => <>{text.length}</>
-    },
-    {
-      title: 'Actions',        
-  },
-
-];
-
-const tableColumns = columns.map((item) => ({
-    ...item,
-}));
-
-function Pendings() {
   return (
-    <div style={{ marginTop: 20 }}>
-    <Card>
-      <Row>
-        <h3><b>Organizaions</b></h3>
-      </Row>
+    <div>
       <Row>
         <Table
+          rowSelection={rowSelection}
           columns={columnss}
-          dataSource={data}
-        // onChange={onChange} 
+          dataSource={newArray}
+          className={"table-responsive"}
         />
       </Row>
-    </Card>
-  </div>
-      );
+    </div>
+  );
 }
 
 export default Pendings;
