@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
 .logo {
@@ -931,11 +932,13 @@ li {
   padding: 8px 28px;
 }
 
-/* .stepper-buttons {
+.stepper-buttons {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-} */
+  align-items: center;
+  margin-top: 10px;
+}
 
 .stepper-button {
   padding: 14px 40px 14px 40px;
@@ -989,9 +992,7 @@ li {
   opacity: 0.2;
   border: transparent;
 }
-.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
-  color: 1.5px solid #a6ca16;
-}
+
 
 /* .ant-modal-header{
   border-bottom: none;
@@ -1107,6 +1108,7 @@ li {
 }
 
 /* Modal CSS */
+
 .News-feed-Modal {
   height: 51px;
   width: 113px;
@@ -1272,6 +1274,19 @@ li {
   line-height: 140%;
 }
 
+.add-service-text p{
+  color: #A6CA16;
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 0;
+  margin-left: 16px;
+}
+.add-service-text .ant-form-item-control-input-content {
+  display: flex;
+  align-items: center;
+}
 /* Create job request modal */
 
 .category-dropdown {
@@ -1494,6 +1509,7 @@ input::placeholder{
 span.ant-steps-icon{
   position: relative;
   visibility: hidden;
+  display: inline-block;
 }
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
   background: transparent;
@@ -1520,7 +1536,7 @@ span.ant-steps-icon{
   margin-right:16px ;
 }
 .ant-form-item {
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .ant-picker{
@@ -1630,9 +1646,6 @@ input.secondary.pac-target-input {
   }
   .search-input-box {
     margin-right: 10px;
-  }
-  .title-fontStyle{
-    font-size: 20px;
   }
 }
 

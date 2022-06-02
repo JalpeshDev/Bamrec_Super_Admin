@@ -3,7 +3,7 @@ import { Form, Button, Row, Input, Col, DatePicker } from "antd";
 import { Layout } from "antd";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import facebook from "../../../../assets/Images/facebook.svg";
+import facebookIcon from "../../../../assets/Images/Facebook.svg";
 import twitter from "../../../../assets/Images/twitter.svg";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -37,7 +37,7 @@ const OrganizationDetails = ({
     },
   };
 
-  console.log(data,"detailsssssssssssssss")
+  console.log(data, "detailsssssssssssssss")
 
   var formSchema = {
     about: data.details?.about || "",
@@ -50,7 +50,7 @@ const OrganizationDetails = ({
   return (
     <Formik
       initialValues={formSchema}
-      onSubmit={(values, { setSubmitting }) => {}}
+      onSubmit={(values, { setSubmitting }) => { }}
       validationSchema={Yup.object().shape({
         about: Yup.string().required("About Required"),
         EstablishedDate: Yup.string().required("EstablishedDate Required"),
@@ -82,40 +82,43 @@ const OrganizationDetails = ({
               validateMessages={validateMessages}
             >
               <Row>
-                <Col span={24}>
-                  <Form.Item label="About">
+                <Col span={24} className="mb-16">
+                  <Form.Item>
+                    <label htmlFor="" className="input-label">About</label>
                     <Input.TextArea
                       rows={4}
                       name="about"
                       onChange={handleChange}
                       value={values.about}
-                      placeholder="background,services,etc"
+                      placeholder="Background, services, etc"
                       onBlur={handleBlur}
                     />
                   </Form.Item>
                 </Col>
               </Row>
               <Row>
-                <Col span={12}>
-                  <Form.Item label="Established on">
-                  <DatePicker
-                    onBlur={handleBlur}
-                    className="date-picker"
-                    value={values.EstablishedDate}
-                    onChange={(date) => {
-                      setFieldValue("EstablishedDate", date);
-                    }}
-                  />
-                  {touched.website && errors.website ? (
-                    <h5 style={{ color: "red" }}>Required</h5>
-                  ) : null}
+                <Col span={12} className="mb-16">
+                  <Form.Item>
+                    <label htmlFor="" className="input-label required-input">Established on</label>
+                    <DatePicker
+                      onBlur={handleBlur}
+                      className="date-picker"
+                      value={values.EstablishedDate}
+                      onChange={(date) => {
+                        setFieldValue("EstablishedDate", date);
+                      }}
+                    />
+                    {touched.website && errors.website ? (
+                      <h5 style={{ color: "red" }}>Required</h5>
+                    ) : null}
                   </Form.Item>
-                
+
                 </Col>
               </Row>
               <Row>
-                <Col span={12}>
-                  <Form.Item label="Website">
+                <Col span={12} className="mb-16">
+                  <Form.Item>
+                    <label htmlFor="" className="input-label required-input">Website</label>
                     <Input
                       placeholder="example@gmail.com"
                       name="website"
@@ -130,10 +133,12 @@ const OrganizationDetails = ({
                   </Form.Item>
                 </Col>
               </Row>
-              <label>Socials</label>
-              <Row>
+              <label className="input-label">Socials</label>
+              <Row className="align-items-center mb-16">
                 <Col span={2}>
-                  <img src={facebook}></img>
+                  <div>
+                    <img src={facebookIcon}></img>
+                  </div>
                 </Col>
                 <Col span={12}>
                   <Form.Item>
@@ -146,9 +151,11 @@ const OrganizationDetails = ({
                   </Form.Item>
                 </Col>
               </Row>
-              <Row>
+              <Row className="align-items-center mb-16">
                 <Col span={2}>
-                  <img src={twitter}></img>
+                  <div>
+                    <img src={twitter}></img>
+                  </div>
                 </Col>
                 <Col span={12}>
                   <Form.Item>
@@ -168,7 +175,7 @@ const OrganizationDetails = ({
                 <Button
                   type="primary"
                   className="stepper-button"
-                  onClick={() => onSubmit({...data, details: values })}
+                  onClick={() => onSubmit({ ...data, details: values })}
                 >
                   Create
                 </Button>

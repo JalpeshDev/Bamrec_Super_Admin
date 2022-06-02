@@ -80,7 +80,7 @@ const Basicinfo = ({ match, Visible, data, handleBack, onSuccess }: any) => {
             <ConfigProvider locale={en}>
               <Form name="nest-messages" onFinish={onFinish} layout="vertical">
                 <Row gutter={24}>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item colon={false}>
                       <label htmlFor="" className="input-label">First Name</label>
                       <Input
@@ -100,7 +100,7 @@ const Basicinfo = ({ match, Visible, data, handleBack, onSuccess }: any) => {
                       ) : null}
                     </Form.Item>
                   </Col>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item colon={false}>
                       <label htmlFor="" className="input-label">Last Name</label>
                       <Input
@@ -119,16 +119,14 @@ const Basicinfo = ({ match, Visible, data, handleBack, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={24}>
+                  <Col span={24} className="mb-16">
                     <Form.Item >
                       <label htmlFor="" className="input-label">Gender</label>
                       <Radio.Group
                         onChange={handleChange}
                         name="gender"
                         value={values.gender}
-
                       >
-
                         <Radio.Button className="radioButton" value="female">
                           Female
                         </Radio.Button>
@@ -140,7 +138,7 @@ const Basicinfo = ({ match, Visible, data, handleBack, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
                       name="email"
                       rules={[{ required: true }]}
@@ -160,7 +158,7 @@ const Basicinfo = ({ match, Visible, data, handleBack, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item>
                       <label htmlFor="" className="input-label">Contact number</label>
                       <CountryPhoneInput
@@ -174,7 +172,7 @@ const Basicinfo = ({ match, Visible, data, handleBack, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row >
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item>
                       <label htmlFor="" className="input-label required-input"> Date of Birth</label>
 

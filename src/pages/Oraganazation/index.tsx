@@ -123,9 +123,7 @@ const Oraganazation = ({
       <Card style={{ borderRadius: "0px" }} className="table-card">
         <Row>
           <Col span={10} >
-            <Typography className={"title-fontStyle "}>
-              Organizations
-            </Typography>
+            <h2>Organizations</h2>
           </Col>
           <Col span={14}>
             {selectedRows.length > 0 ? (

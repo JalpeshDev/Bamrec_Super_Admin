@@ -248,7 +248,11 @@ h5 {
   word-break: break-word !important
 }
 
-/* margin css */
+/* margin css/ spacing */
+
+.mb-16{
+  margin-bottom: 16px;
+}
 
 .m-auto {
   margin: auto !important

@@ -113,7 +113,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                 autoComplete="off"
               >
                 <Row gutter={24}>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
                       name="name"
                       rules={[{ required: true }]}
@@ -140,7 +140,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                       ) : null}
                     </Form.Item>
                   </Col>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item className="upload-file">
                       <label htmlFor="" className="input-label">Profile Photo</label>
                       <ImageCrop
@@ -153,7 +153,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                 </Row>
 
                 <Row gutter={24}>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
                       colon={false}
                       rules={[{ required: true, message: "Required" }]}
@@ -176,7 +176,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                       ) : null}
                     </Form.Item>
                   </Col>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item colon={false}>
                       <label htmlFor="" className="input-label">Admin Last Name</label>
                       <Input
@@ -195,7 +195,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item name="email">
                       <label htmlFor="" className="input-label required-input">Organization Email</label>
                       <Input
@@ -212,7 +212,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item>
                       <label htmlFor="" className="input-label">Phone number</label>
                       <CountryPhoneInput
@@ -226,7 +226,7 @@ const Basicinfo = ({ match, Visible, data, onSuccess }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
                       name="location"
                       rules={[{ required: true }]}

@@ -116,7 +116,7 @@ const Family = ({
       <Card style={{ borderRadius: "0px" }} className="table-card">
         <Row>
           <Col span={10}>
-            <Typography className={"title-fontStyle "}>Family</Typography>
+            <h2>Family</h2>
           </Col>
           <Col span={14}>
             {selectedRows.length > 0 ? (

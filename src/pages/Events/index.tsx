@@ -52,7 +52,7 @@ const Events = ({ match,
     <AppLayout>
       <div>
         <Row>
-          <h3>Events</h3>
+          <h2>Events</h2>
         </Row>
         <Row>
           <Col span={16}>

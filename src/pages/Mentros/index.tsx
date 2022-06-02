@@ -125,8 +125,9 @@ const Mentors = ({
         <Row>
           <Col span={10}>
             <Typography className={"title-fontStyle "}>
-              Mentors
+
             </Typography>
+            <h2>Mentors</h2>
           </Col>
           <Col span={14}>
             {selectedRows.length > 0 ? (

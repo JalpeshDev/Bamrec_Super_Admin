@@ -34,8 +34,9 @@ const Services = ({ match, Visible, handleBack, onSubmit, data }: any) => {
     <Layout>
       <Form name="nest-messages" onFinish={onFinish} layout="vertical">
         <Row>
-          <Col span={12}>
-            <Form.Item rules={[{ required: true }]} label="Services">
+          <Col span={12} className="mb-16">
+            <Form.Item rules={[{ required: true }]} >
+              <label htmlFor="" className="input-label required-input">Services</label>
               <Input
                 placeholder="Ex:Tutor, Sport Coach"
                 name="services"
@@ -48,8 +49,9 @@ const Services = ({ match, Visible, handleBack, onSubmit, data }: any) => {
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
-            <Form.Item rules={[{ required: true }]} label="Description">
+          <Col span={24} className="mb-16">
+            <Form.Item rules={[{ required: true }]}>
+              <label htmlFor="" className="input-label required-input">Description</label>
               <Input.TextArea
                 rows={4}
                 name="description"
@@ -66,9 +68,10 @@ const Services = ({ match, Visible, handleBack, onSubmit, data }: any) => {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="mb-16">
             <Form.Item className="add-service-text">
-              <img src={plus}></img>Add more specific services
+              <img src={plus}></img>
+              <p>Add more specific services</p>
             </Form.Item>
           </Col>
         </Row>
