@@ -3,7 +3,7 @@ import { Form, Button, Row, Input, Col, DatePicker } from "antd";
 import { Layout } from "antd";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import facebookIcon from "../../../../assets/Images/Facebook.svg";
+import facebookIcon from "../../../../assets/Images/facebook.svg";
 import twitter from "../../../../assets/Images/twitter.svg";
 import { Formik } from "formik";
 import * as Yup from "yup";
