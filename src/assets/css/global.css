@@ -51,6 +51,11 @@ a{
   text-decoration: none;
 }
 
+p{
+  margin-bottom: 0;
+}
+
+
 b,
 strong {
     font-weight: bolder;

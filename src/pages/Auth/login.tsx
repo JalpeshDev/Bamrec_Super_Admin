@@ -26,20 +26,20 @@ const Login = () => {
     const [form] = Form.useForm();
     const success = () => {
         message.success('Login Sucessfully. !');
-      };
-      const error = () => {
+    };
+    const error = () => {
         message.error('This is an error message');
-      };
+    };
     const onFinish = (values: any) => {
         console.log('Received values of form: ', values);
-        console.log("Email,password",email,password);
-        if(loginData.userId == values.email && loginData.password == values.password) {
+        console.log("Email,password", email, password);
+        if (loginData.userId == values.email && loginData.password == values.password) {
             history.push(`/Dashboard`)
         }
         else {
-            
+
             alert("Invalid UserName and Password")
-            
+
         }
     };
     return (
@@ -74,7 +74,7 @@ const Login = () => {
                                         <span>Email</span>
                                         <Form.Item
                                             name="email"
-                                            
+
                                             rules={[
                                                 {
                                                     type: 'email',
@@ -98,11 +98,11 @@ const Login = () => {
                                                 },
                                             ]}
                                         >
-                                        <Input.Password />
+                                            <Input.Password />
                                         </Form.Item>
                                         <Form.Item>
-                                            <Button type="primary" htmlType="submit" className="login-form-button"> 
-                                               <span style={{color:"white", fontSize:"14px",alignItems:"center"}}>Login</span> 
+                                            <Button type="primary" htmlType="submit" className="login-form-button">
+                                                <span style={{ color: "white", fontSize: "14px", alignItems: "center" }}>Login</span>
                                             </Button>
                                         </Form.Item>
                                         <div className="break-line">
@@ -133,11 +133,11 @@ const Login = () => {
                                         <Row className="text-center signup-link" justify="center">
                                             <p>Don’t have account? <a href="/Signup">Sign Up</a></p>
                                             <Button>
-                                                
+
                                             </Button>
-                                            
+
                                         </Row>
-                                    </Form>  
+                                    </Form>
                                 </div>
                             </div>
                         </div>

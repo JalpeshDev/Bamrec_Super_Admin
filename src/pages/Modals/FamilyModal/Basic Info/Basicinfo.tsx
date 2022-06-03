@@ -90,7 +90,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
               >
                 <Row gutter={24} align="bottom">
                   <Col span={12}>
-                    <Form.Item  rules={[{ required: true }]} label="Select parent">
+                    <Form.Item rules={[{ required: true }]} label="Select parent">
                       <Select
                         className="select"
                         placeholder="Select"
@@ -176,7 +176,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                   </Col>
                 </Row>
                 <Row gutter={24}>
-                  <Col span={12}> 
+                  <Col span={12}>
                     <Form.Item colon={false} rules={[{ required: true }]} label="School">
                       <Input
                         name="school"
