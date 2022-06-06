@@ -126,7 +126,7 @@ const Analytics = ({ match }: any) => {
 
   return (
     <AppLayout>
-      <div style={{ justifyContent: 'right', paddingBottom: '20px', display: 'flex' }}>
+      <div style={{ justifyContent: 'right', paddingBottom: '20px', display: 'flex' }} >
         <Row >
           <Col>
             <Button style={{ borderRadius: '20px', backgroundColor: '#EBEDF1', display: 'flex', margin: '10px' }}>Filter</Button>

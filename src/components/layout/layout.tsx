@@ -1,14 +1,12 @@
 import React from "react";
 import {  Layout } from "antd";
-import NavBar from "../navbar/navbar";
+import NavBar from "../sidebar/navbar";
 const AppLayout: React.FC<{}> = (props) => {
   const { children } = props;
   return (
     <>
       <NavBar>
-        <Layout >
-          <div>{children}</div>
-        </Layout>
+          {children}
       </NavBar>
     </>
   );

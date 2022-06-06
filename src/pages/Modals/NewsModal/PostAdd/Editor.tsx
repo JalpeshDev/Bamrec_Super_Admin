@@ -46,7 +46,7 @@ const Editor = (props: any) => {
 
   };
   return (
-    <ReactQuill 
+    <ReactQuill
       theme="snow"
       modules={modules}
       formats={formats}

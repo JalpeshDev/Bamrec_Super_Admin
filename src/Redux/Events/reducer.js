@@ -24,23 +24,23 @@ export default (state = initState, action) => {
       };
     }
 
-    case actions.CURRENT_Event_DATA: {
-      return {
-        ...state,
-        currentEventData: action.payload,
-      };
-    }
+    // case actions.CURRENT_Event_DATA: {
+    //   return {
+    //     ...state,
+    //     currentEventData: action.payload,
+    //   };
+    // }
 
-    case actions.DELTE_Event_DATA: {
-      let filteredData = state.EventsData.filter((item) => {
-        return item.id !== action.payload.id;
-      });
-      localStorage.setItem("Events", JSON.stringify(filteredData));
-      return {
-        ...state,
-        EventsData: filteredData,
-      };
-    }
+    // case actions.DELTE_Event_DATA: {
+    //   let filteredData = state.EventsData.filter((item) => {
+    //     return item.id !== action.payload.id;
+    //   });
+    //   localStorage.setItem("Events", JSON.stringify(filteredData));
+    //   return {
+    //     ...state,
+    //     EventsData: filteredData,
+    //   };
+    // }
 
     default:
       return state;

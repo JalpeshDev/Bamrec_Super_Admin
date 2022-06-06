@@ -106,9 +106,9 @@ const MentorProfile = ({ match }: any) => {
                                 <img alt="alt" src={phone}></img>
                                 {profile
                                   ? "+" +
-                                  profile?.phone?.code +
-                                  " " +
-                                  profile?.phone?.phone
+                                    profile?.phone?.code +
+                                    " " +
+                                    profile?.phone?.phone
                                   : "+1 (305) 123 4567"}
                               </span>
                               <span>
@@ -127,7 +127,7 @@ const MentorProfile = ({ match }: any) => {
                                 {profile?.skills.map((skill: any) => {
                                   return (
                                     // <h5 style={{ margin: "2px" }}>{skill}</h5>
-                                    <img style={{ borderRadius: "60%", margin: "1px" }} src={soccer}></img>
+                                    <img  style={{borderRadius:"60%",margin:"1px"}} src={soccer}></img>
                                   );
                                 })}
                               </div>

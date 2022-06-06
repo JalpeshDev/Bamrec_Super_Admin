@@ -118,7 +118,7 @@ const Newsfeed = ({ match, newsFeedData,organizationData }: any) => {
 
   return (
     <AppLayout>
-      <div className="news-feed-block" style={{ padding: "10px",height:"100vh" }}>
+      <div className="news-feed-block container">
         <Row>
           <h3>News Feed</h3>
         </Row>

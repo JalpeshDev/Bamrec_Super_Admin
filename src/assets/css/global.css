@@ -647,3 +647,8 @@ h5 {
 .min-vh-100 {
   min-height: 100vh !important
 }
+
+
+.ant-switch-checked {
+  background-color: #A6CA16;
+}

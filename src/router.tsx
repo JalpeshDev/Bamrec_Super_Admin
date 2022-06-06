@@ -25,6 +25,11 @@ import OraganazationModel from "./pages/Modals/OraganazationModal/OrganizationMo
 import ProposeMentor from "./pages/JobRequest/ProposeMentor/ProposeMentor";
 import ProposedMentors from "./pages/JobRequest/ProposedMentors/ProposedMentors";
 import MentorProfile from "./pages/JobRequest/ViewProfile/ViewProfile";
+import ParentProfile from "./pages/Family/Profiles/ParentProfile";
+import FamilyProfile from "./pages/Family/Profiles/FamilyProfile";
+import KidProfile from "./pages/Family/Profiles/KidProfile/KidProfileEdit/KidProfile";
+import KidDetails from "./pages/Family/Profiles/KidProfile/KidDetails/kidDetails";
+import AskQuestions from "./pages/Settings/AskQuestions";
 
 
 const NoMatchPage = () => {
@@ -139,6 +144,7 @@ const Router = ({ history }: any) => {
                 <Route path="/jobrequest" exact={true} component={JobRequest} />
                 <Route path="/propose-mentor" exact={true} component={ProposeMentor} />
                 <Route path="/analytics" exact={true} component={Analytics} />
+                <Route path="/askQuestions" exact={true} component={AskQuestions} />
                 <Route path="/newsfeed" exact={true} component={Newsfeed} />
                 <Route path="/proposed-mentors" exact={true} component={ProposedMentors} />
                 <Route path="/settings" exact={true} component={Settings} />
@@ -146,6 +152,10 @@ const Router = ({ history }: any) => {
                 <Route path='/event-calender' exact={true} component={Events2Screen}/>
                 <Route path='/organization-profile' exact={true} component={OrganizationProfile}/>
                 <Route path='/mentor-profile' exact={true} component={MentorProfile}/>
+                <Route path='/parent-profile' exact={true} component={ParentProfile}/>
+                <Route path='/family-profile' exact={true} component={FamilyProfile}/>
+                <Route path='/kid-profile' exact={true} component={KidProfile}/>
+                <Route path='/kid-details' exact={true} component={KidDetails}/>
                 <Route path='/organization-modal' exact={true} component={OraganazationModel}/>
                 <Route path="*" component={NoMatchPage} />
             </Switch>

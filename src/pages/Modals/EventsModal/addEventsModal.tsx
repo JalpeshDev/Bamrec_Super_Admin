@@ -37,22 +37,17 @@ const AddEventsModal = ({ match, modalVisible, currentMentorData }: any) => {
 
     var a = [];
     a = JSON.parse(localStorage.getItem("events") || "[]") || [];
-
-    if (currentMentorData) {
-      a.forEach((item: any, index: any) => {
-        if (item.id == data.id) {
-          a[index] = data;
-        }
-      });
-    } else {
-      a.push(data);
-    }
+    a.push(data);
+    console.log(a);
+    
     dispatch({ type: eventAction.ADD_EVENTS_DATA, payload: a });
     message.success("completed");
-    // setIsModalVisible(false);
-
-    message.success("completed");
-    // setIsModalVisible(false);
+    setIsModalVisible(false);
+    dispatch({
+      type: eventAction.EVENTS_MODAL_VISIBLE,
+      payload: false,
+    });
+    
   };
 
   console.log("Events Data", formData)

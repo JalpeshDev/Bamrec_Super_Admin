@@ -34,7 +34,7 @@ const HeaderComponent = () => {
 
   return (
     <div>
-      <Header style={{ backgroundColor: "white", display: "flex", flex: 1 }}>
+      <Header style={{ backgroundColor: "white", display: "flex", flex: 1 }} className="header-nav">
         <Row style={{ display: "flex", flexWrap: "nowrap", width: "100%" }}>
           <Col span={4}
             className={"header-title"}

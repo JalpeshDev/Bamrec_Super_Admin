@@ -130,13 +130,13 @@ const Login = () => {
                                                 </a>
                                             </div>
                                         </Row>
-                                        <Row className="text-center signup-link" justify="center">
+                                        {/* <Row className="text-center signup-link" justify="center">
                                             <p>Don’t have account? <a href="/Signup">Sign Up</a></p>
                                             <Button>
-
+                                                
                                             </Button>
-
-                                        </Row>
+                                            
+                                        </Row> */}
                                     </Form>
                                 </div>
                             </div>

@@ -88,8 +88,8 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                 autoComplete="off"
               >
                 <Row>
-                  <Col span={12}>
-                    <label>Favorite Color</label>
+                  <Col span={12} className="mb-16">
+                    <label htmlFor="" className="input-label">Favorite Color <span>&#x1F6C8;</span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -100,8 +100,8 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <label>Personality Trait</label>
+                  <Col span={12} className="mb-16">
+                    <label htmlFor="" className="input-label">Personality Trait <span>&#x1F6C8;</span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -112,8 +112,8 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <label>Senitive Subjects</label>
+                  <Col span={12} className="mb-16">
+                    <label htmlFor="" className="input-label">Senitive Subjects</label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -124,8 +124,8 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <label>Favorite Subject</label>
+                  <Col span={12} className="mb-16">
+                    <label htmlFor="" className="input-label">Favorite Subject</label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -136,8 +136,8 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <label>Dislike Subjects</label>
+                  <Col span={12} className="mb-16">
+                    <label htmlFor="" className="input-label">Dislike Subjects</label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}

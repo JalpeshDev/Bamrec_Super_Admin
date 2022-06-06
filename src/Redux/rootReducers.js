@@ -11,6 +11,8 @@ import family from './Family/reducer'
 import newsFeed from './NewsFeed/reducer'
 import jobRequest from './JobRequest/reducer'
 import events from './Events/reducer'
+import settings from './Settings/reducer'
+
 
 export default {
     auth,
@@ -25,6 +27,7 @@ export default {
     family,
     newsFeed,
     jobRequest,
-    events
+    events,
+    settings,
     
 };

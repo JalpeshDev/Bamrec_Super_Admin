@@ -17,18 +17,18 @@ interface PieChartData {
   value: number;
 }
 
-function Pendings({ organizationData, handleMenu }: any) {
+function Pendings({ organizationData ,handleMenu}: any) {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-
+    
     let pendingOrganizations = organizationData.filter((organization: any) => {
       return organization.status == "pending";
     });
     setData(pendingOrganizations);
   }, [organizationData]);
-
+  
   const menu = (
     <Menu onClick={handleMenu}>
       <Menu.Item key="active">
@@ -107,12 +107,11 @@ function Pendings({ organizationData, handleMenu }: any) {
   ];
 
   return (
-    <Table
-      columns={columnss}
-      dataSource={newArray}
-      // onChange={onChange}
-      className="table-responsive"
-    />
+        <Table
+          columns={columnss}
+          dataSource={newArray}
+          // onChange={onChange}
+        />
   );
 }
 

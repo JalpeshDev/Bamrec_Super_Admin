@@ -18,7 +18,7 @@ const Managewidgets = () => {
           onClick={() => {
             showWidgetsDrawer();
           }}
-          className="d-flex align-items-center"
+          className={'d-flex align-items-center'}
         >
           <span>
             <img src={Wadge} />

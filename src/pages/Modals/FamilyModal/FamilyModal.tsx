@@ -96,7 +96,7 @@ const FamilyModal = ({ match, modalVisible, currentData }: any) => {
   return (
     <Layout>
       <Modal
-        title="New Kid"
+       className="organization_model"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -104,11 +104,14 @@ const FamilyModal = ({ match, modalVisible, currentData }: any) => {
         footer={null}
         width={600}
       >
-        <Steps className="stepper" current={current}>
-          {steps.map((item) => (
-            <Step key={item.title} title={item.title} />
-          ))}
-        </Steps>
+        <div className="model-header">
+        <h4> New Kid </h4>
+          <Steps  current={current}>
+            {steps.map((item) => (
+              <Step key={item.title} className="stepper" title={item.title} />
+            ))}
+          </Steps>
+        </div>
         {current == 0 && <Basicinfo data={data} onSuccess={next} />}
         {current == 1 && (
           <AuthorizedAdult data={data} onSuccess={next} handleBack={prev} />

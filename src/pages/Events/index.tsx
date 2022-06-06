@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AppLayout from "../../components/layout/layout";
 import { SearchOutlined } from "@ant-design/icons";
@@ -9,15 +9,14 @@ import { Typography, Row, Col } from "antd";
 import { Menu, Dropdown, Button, Space } from "antd";
 import { Skeleton, Switch, Card, Avatar } from "antd";
 import eventCard1 from "../../assets/Images/eventCard-1.png";
-import eventCard2 from "../../assets/Images/eventCard-2.png";
-import eventCard3 from "../../assets/Images/eventCard-3.png";
-import googleIcon from "../../assets/Images/google.svg";
-import outlook from "../../assets/Images/outlook.svg";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
 import { DownOutlined } from "@ant-design/icons";
 import CalenderComponent from "./CalenderComponent.js";
 import AddEventsModal from "../Modals/EventsModal/addEventsModal";
+import moment from "moment";
+import RegisterChildModal from "../Modals/EventsModal/RegisterChildModal";
+import EventsDetails from "./EventsDetails/EventsDetailsProfile";
 
 const { Meta } = Card;
 
@@ -39,20 +38,20 @@ function onPanelChange(value: any, mode: any) {
   console.log(value, mode);
 }
 const Events = ({ match,
-  ismodalVisible,
   modalVisible,
+  eventsData,
   currentMentorData
 }: any) => {
-
   const { id } = match.params;
   const history = useHistory();
-  console.log("Modal Visible", modalVisible);
+  const [isModalVisible, setModalVisible] = useState(false);
+
 
   return (
     <AppLayout>
-      <div>
+      <div style={{height:"100vh"}}>
         <Row>
-          <h2>Events</h2>
+          <h3>Events</h3>
         </Row>
         <Row>
           <Col span={16}>
@@ -70,9 +69,8 @@ const Events = ({ match,
                   placement="bottom"
                   className="event-btns"
                 >
-                  <Button className={'light-btn'}>
+                  <Button>
                     Age Group <DownOutlined />
-
                   </Button>
                 </Dropdown>
               </div>
@@ -82,7 +80,7 @@ const Events = ({ match,
                   placement="bottom"
                   className="event-btns"
                 >
-                  <Button className={'light-btn'}>
+                  <Button>
                     Event type <DownOutlined />
                   </Button>
                 </Dropdown>
@@ -93,7 +91,7 @@ const Events = ({ match,
                   placement="bottom"
                   className="event-btns"
                 >
-                  <Button className={'light-btn'}>
+                  <Button>
                     Organization <DownOutlined />
                   </Button>
                 </Dropdown>
@@ -116,77 +114,49 @@ const Events = ({ match,
         <>
           <Row>
             <Col span={16}>
+              <div className="today-events-header">
+                <span>Today's Events</span>
+              </div>
+              <Row>
+                {
+                  eventsData.map((events: any) => {
+                    return (
+                      <Card style={{ width: 730 }}
+                        
+                      >
+                        <div className="register-box">
+                          <Button
+                            style={{ backgroundColor: '#2BA7CA' }}
+                            onClick={() => {
+                              setModalVisible(true);
+                              // setCurrentData([]);
+                            }}
+                          >
+                            Register a child
+                          </Button>
+                        </div>
+                        <p className="event-date">{moment(events.date).format("DD/MM/YYYY")}</p>
+                        <Meta
+                          avatar={<img src={eventCard1} 
+                          onClick={() => {
+                            history.push("/events-details");
+                          }}
+                          />}
+                          title={events.organizationName}
+                          description={events.description}
+                        ></Meta>
+                      </Card>
+                    )
+                  })
+                }
 
-              <div className="event-box">
-                <div className="today-events-header">
-                  <span>Today's Events</span>
-                </div>
-                <div>
-                  <div className="register-box">
-                    <Meta
-                      avatar={<img src={eventCard1} />}
-                      title="Minions Camp"
-                      description="Ages 3 - 5"
-                    ></Meta>
-                    <p className="event-date">4 June, 09:00</p>
-                    <Button className="blue-btn">Register a child</Button>
-                  </div>
-                </div>
-              </div>
-              <div className="event-box">
-                <div className="today-events-header">
-                  <span>4 June 2021</span>
-                </div>
-                <div>
-                  <div className="register-box">
-                    <Meta
-                      avatar={<img src={eventCard2} />}
-                      title="Day in a Zoo"
-                      description="Ages 3 - 5"
-                    />
-                    <p className="event-date">5 June, 09:00</p>
-                    <Button className="blue-btn">Register a child</Button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="event-box">
-                <div className="today-events-header">
-                  <span>4 June 2021</span>
-                </div>
-                <div className="register-box">
-                  <Meta
-                    avatar={<img src={eventCard3} />}
-                    title="Minions Camp"
-                    description="Ages 3 - 5"
-                  />
-                  <p className="event-date">3 June, 09:00</p>
-                  <Button className="blue-btn">Register a child</Button>
-                </div>
-              </div>
+              </Row>
             </Col>
-            {/* Right side Col */}
-            <Col span={6}>
-              <div >
-                <CalenderComponent />
-              </div>
-              <div style={{ padding: "20px" }}>
-                <b>Sync with calendars</b>
-              </div>
-              <div className="social-btn">
-                <a href="" className="facebook-btn">
-                  <img src={googleIcon} />
-                  <span>Google Calendar</span>
-                </a>
-              </div>
-              <div className="social-btn">
-                <a href="" className="facebook-btn">
-                  <img src={outlook} />
-                  <span>Outlook</span>
-                </a>
-              </div>
-            </Col>
-
+            {isModalVisible ? (
+            <RegisterChildModal/>
+          ) : (
+            <></>
+          )}
             {modalVisible ? (
               <AddEventsModal
                 modalVisible={modalVisible}

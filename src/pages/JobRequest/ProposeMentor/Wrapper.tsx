@@ -51,11 +51,11 @@ const Wrapper: React.FC<{}> = ({ children, mentors }: any) => {
     <Layout>
       <HeaderComponent />
       <Layout id="job-request-layout">
-        <Sider className="side-bar">
+        <Sider className="side-bar side-bar-nav">
           <div style={{ marginLeft: "40px" }}>
             <Row>
               <a
-                style={{ color: "black",marginBottom:"15px" }}
+                style={{ color: "black", marginBottom: "15px" }}
                 onClick={() => history.push("/jobrequest")}
               >
                 <LeftOutlined />

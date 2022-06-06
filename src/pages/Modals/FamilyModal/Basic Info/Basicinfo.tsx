@@ -88,9 +88,10 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                 layout={"vertical"}
                 autoComplete="off"
               >
-                <Row gutter={24} align="bottom">
-                  <Col span={12}>
-                    <Form.Item rules={[{ required: true }]} label="Select parent">
+                <Row gutter={24}>
+                  <Col span={12} className="mb-16">
+                    <Form.Item rules={[{ required: true }]} >
+                    <label htmlFor="" className="input-label required-input">Select parent</label>
                       <Select
                         className="select"
                         placeholder="Select"
@@ -108,21 +109,22 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                       </Select>
                     </Form.Item>
                   </Col>
-                  <Col span={8}>
-                    <Form.Item className="add-service-text">
-                      <Row justify="space-around">
-                        <img src={plusBlue}></img>Create new family
-                      </Row>
-                    </Form.Item>
+                  <Col span={8} className="mb-16 d-flex align-items-center">
+                    <Row>
+                      <div className="d-flex add-family">
+                        <img src={plusBlue}></img>
+                        <p className="text-primary">Create new family</p> 
+                      </div>
+                    </Row>
                   </Col>
                 </Row>
                 <Row gutter={24}>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
                       colon={false}
-                      label="First Name"
                       rules={[{ required: true }]}
                     >
+                      <label htmlFor="" className="input-label">First Name</label>
                       <Input
                         placeholder="FirstName"
                         name="firstname"
@@ -131,8 +133,9 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                       />
                     </Form.Item>
                   </Col>
-                  <Col span={12}>
-                    <Form.Item colon={false} label="Last name">
+                  <Col span={12} className="mb-16">
+                    <Form.Item colon={false}>
+                      <label htmlFor="" className="input-label">Last Name</label>
                       <Input
                         placeholder="Last Name"
                         name="lastname"
@@ -143,8 +146,9 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={24}>
-                    <Form.Item label="Gender">
+                  <Col span={24} className="mb-16">
+                    <Form.Item>
+                    <label htmlFor="" className="input-label required-input">Gender</label>
                       <Radio.Group
                         onChange={handleChange}
                         name="gender"
@@ -162,8 +166,9 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <Form.Item label="Date of Birth">
+                  <Col span={12} className="mb-16">
+                    <Form.Item>
+                    <label htmlFor="" className="input-label required-input">Date of Birth</label>
                       <DatePicker
                         className="date-picker"
                         name="dob"
@@ -176,8 +181,9 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                   </Col>
                 </Row>
                 <Row gutter={24}>
-                  <Col span={12}>
-                    <Form.Item colon={false} rules={[{ required: true }]} label="School">
+                  <Col span={12} className="mb-16">
+                    <Form.Item colon={false} >
+                    <label htmlFor="" className="input-label required-input">School</label>
                       <Input
                         name="school"
                         value={values.school}
@@ -185,12 +191,13 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                         onBlur={handleBlur}
                       />
                       {touched.school && errors.school ? (
-                        <h5 style={{ color: "red" }}>Required</h5>
+                        <h5 style={{ color: "red" }}>Enter a school</h5>
                       ) : null}
                     </Form.Item>
                   </Col>
-                  <Col span={12}>
-                    <Form.Item colon={false} label="Grade">
+                  <Col span={12} className="mb-16">
+                    <Form.Item colon={false}>
+                    <label htmlFor="" className="input-label required-input">Grade</label>
                       <Input
                         name="grade"
                         value={values.grade}
@@ -198,11 +205,13 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                         onBlur={handleBlur}
                       />
                       {touched.grade && errors.grade ? (
-                        <h5 style={{ color: "red" }}>Required</h5>
+                        <h5 style={{ color: "red" }}>Enter a grade</h5>
                       ) : null}
                     </Form.Item>
                   </Col>
                 </Row>
+
+               <div  className="footer-modal">
                 <div className="stepperNextButton">
                   <Button
                     type="primary"
@@ -225,6 +234,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                     Next
                   </Button>
                 </div>
+              </div>
               </Form>
             </ConfigProvider>
           </Layout>

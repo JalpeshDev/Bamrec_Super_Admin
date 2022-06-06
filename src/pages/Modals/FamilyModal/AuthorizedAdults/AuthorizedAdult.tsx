@@ -96,12 +96,12 @@ const AuthorizedAdult = ({
                 autoComplete="off"
               >
                 <Row gutter={24}>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
                       colon={false}
-                      rules={[{ required: true }]}
-                      label="First Name"
+                      rules={[{ required: true }]}                   
                     >
+                       <label htmlFor="" className="input-label">First Name</label>
                       <Input
                         placeholder="FirstName"
                         name="firstname"
@@ -110,8 +110,9 @@ const AuthorizedAdult = ({
                       />
                     </Form.Item>
                   </Col>
-                  <Col span={12}>
-                    <Form.Item colon={false} label="Last Name">
+                  <Col span={12} className="mb-16">
+                    <Form.Item colon={false}>
+                    <label htmlFor="" className="input-label">Last Name</label>
                       <Input
                         placeholder="Last Name"
                         name="lastname"
@@ -122,12 +123,12 @@ const AuthorizedAdult = ({
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
+                  <Col span={12} className="mb-16">
                     <Form.Item
-                      name="role"
-                      label="Role"
+                      name="role"                   
                       rules={[{ required: true }, { type: "string", min: 6 }]}
                     >
+                       <label htmlFor="" className="input-label required-input">Role</label>
                       <Input
                         placeholder="Ex:Father"
                         onChange={handleChange}
@@ -141,8 +142,9 @@ const AuthorizedAdult = ({
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <Form.Item label="Email">
+                  <Col span={12} className="mb-16">
+                    <Form.Item>
+                    <label htmlFor="" className="input-label required-input">Email</label>
                       <Input
                         placeholder="example@gmail.com"
                         name="email"
@@ -153,8 +155,11 @@ const AuthorizedAdult = ({
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={12}>
-                    <Form.Item label="Contact number">
+                  <Col span={12} className="mb-16">
+                    <Form.Item
+                      rules={[{ required: true }]}
+                    >
+                    <label htmlFor="" className="input-label required-input">Contact number</label>
                       <CountryPhoneInput
                         value={values.phone}
                         onChange={(v) => {
@@ -166,9 +171,14 @@ const AuthorizedAdult = ({
                   </Col>
                 </Row>
                 <Row>
-                    <Form.Item className="add-service-text">
-                        <img src={plusBlue}></img>Add more authorized adult
-                    </Form.Item>
+                <Col className="mb-16 d-flex align-items-center">
+                    <Row>
+                      <div className="d-flex add-family">
+                        <img src={plusBlue}></img>
+                        <p className="text-green" style={{fontSize:'15px'}}>Add more authorized adult</p> 
+                      </div>
+                    </Row>
+                  </Col>
                 </Row>
                 <div className="stepper-buttons">
                   <h5

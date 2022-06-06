@@ -181,7 +181,7 @@ const ActivityReport = () => {
     const generalData: any = [
         {
             key: '1',
-            general: 'John Brown',
+            general: 'Fun Kids',
         },
         {
             key: '2',
@@ -210,7 +210,7 @@ const ActivityReport = () => {
     const trainingData: any = [
         {
             key: '1',
-            training: 'John Brown',
+            training: 'Fun Kids',
         },
         {
             key: '2',
@@ -239,7 +239,7 @@ const ActivityReport = () => {
     const consultationData: any = [
         {
             key: '1',
-            consultation: 'John Brown',
+            consultation: 'Fun Kids',
         },
         {
             key: '2',

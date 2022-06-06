@@ -130,7 +130,7 @@ const JobRequest = ({
 
   return (
     <AppLayout>
-      <div className="job-request-container">
+      <>
         <Row>
           <h3>Job Requests</h3>
         </Row>
@@ -326,7 +326,7 @@ const JobRequest = ({
             <></>
           )}
         </>
-      </div>
+      </>
     </AppLayout>
   );
 };

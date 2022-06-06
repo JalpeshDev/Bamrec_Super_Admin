@@ -45,7 +45,7 @@ const NavBar: React.FC<{}> = (props) => {
   return (
     <Layout>
       <HeaderComponent />
-      <Layout className=".site-layout-content" style={{ padding: "24px 0" }}>
+      <Layout className="site-layout-content" style={{ padding: "24px 0" }}>
         <Sider className="side-bar side-bar-nav">
           <Menu mode="inline" style={{ height: "100%" }}>
             <Menu.Item

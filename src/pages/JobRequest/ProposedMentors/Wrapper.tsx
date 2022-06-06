@@ -15,8 +15,8 @@ const Wrapper: React.FC<{}> = (props) => {
     <Layout>
       <HeaderComponent />
       <Layout id="job-request-layout">
-        <Sider className="side-bar">
-          <div style={{marginLeft:"15px"}}>
+        <Sider className="side-bar side-bar-nav">
+          <div style={{ marginLeft: "15px" }}>
             <a
               style={{ color: "black" }}
               onClick={() => history.push("/jobrequest")}

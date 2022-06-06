@@ -42,6 +42,13 @@ const CreateEvent = ({ match, Visible, onSubmit, currentMentorData }: any) => {
 
   const [loading, setLoading] = useState(false);
 
+
+  // var formSchema = {
+  //   id:editData?.id||uuidv4(),
+  //   organizationName: editData?.organizationName|| "",
+  //   title:  editData?.title|| "",
+  //   describe: "",
+  // };
   const onFinish = (values: any) => {
     console.log("value is.......", values);
     let data = {
@@ -52,8 +59,8 @@ const CreateEvent = ({ match, Visible, onSubmit, currentMentorData }: any) => {
       price: values.price,
       description: values.description
     };
-    console.log("Data is here",data);
-    
+    console.log("Data is here", values.agerange);
+
     //     console.log(data);
     //     let newsFeedData = [];
     //     newsFeedData =
@@ -143,7 +150,9 @@ const CreateEvent = ({ match, Visible, onSubmit, currentMentorData }: any) => {
                 <Row>
                   <Col span={12}>
                     <Form.Item colon={false} label="Select organization">
-                      <Select className="select" onChange={handleChange}>
+                      <Select className="select" onChange={(value) => {
+                        setFieldValue("organizationName", value);
+                      }}>
                         <Option name="organizationName" value="item1">
                           item1
                         </Option>
@@ -156,12 +165,16 @@ const CreateEvent = ({ match, Visible, onSubmit, currentMentorData }: any) => {
                   <Col span={12}>
                     <Upload
                       name="avatar"
+
                       listType="picture-card"
                       className="avatar-uploader"
                       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                     >
                       {imageUrl ? (
-                        <img src={imageUrl} alt="avatar" />
+                        <div>
+]]                          <img src={imageUrl} alt="avatar" />
+                        </div>
+
                       ) : (
                         uploadButton
                       )}
@@ -254,7 +267,9 @@ const CreateEvent = ({ match, Visible, onSubmit, currentMentorData }: any) => {
                     className="stepper-button"
                     size={"large"}
                     onClick={() => {
-                      onFinish(values);
+                      console.log(values);
+
+                      onSubmit(values);
                     }}
                   >
                     Create

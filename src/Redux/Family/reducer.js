@@ -14,6 +14,7 @@ export default (state = initState, action) => {
         ...state,
         isModalVisible: action.payload,
       };
+      
     case actions.ADD_FAMILY_DATA: {
       localStorage.setItem("family", JSON.stringify(action.payload));
       return {
