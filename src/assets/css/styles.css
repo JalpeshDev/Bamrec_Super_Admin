@@ -224,6 +224,12 @@ input.search-input-group {
   background: linear-gradient(116.19deg, #ffffff 1.96%, #e8e9ea 84.63%);
   z-index: 2;
 }
+.albilities-block .ant-input,
+.ant-input-affix-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
 .ant-input,
 .ant-input-affix-wrapper {
   border: 1px solid #ebedf1;
@@ -234,6 +240,7 @@ input.search-input-group {
   padding: 10px 16px;
   width: 100%;
 }
+
 .ant-input-affix-wrapper .ant-input {
   border-radius: 0px;
   border: none;
@@ -276,6 +283,7 @@ input.search-input-group:focus-visible{
   float: right;
   margin: 16px 0 16px 24px;
 }
+
 .event-top-bar {
   display: flex;
 }

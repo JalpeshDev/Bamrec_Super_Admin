@@ -103,7 +103,7 @@ const Abilities = ({ match, Visible, onSuccess, data, handleBack }: any) => {
                 layout={"vertical"}
                 autoComplete="off"
               >
-                <div className="">
+                <div className="albilities-block">
                   <Row>
                     <Col span={24} className="mb-16">
                       <label htmlFor="" className="input-label">Lists of strengths<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
@@ -147,10 +147,10 @@ const Abilities = ({ match, Visible, onSuccess, data, handleBack }: any) => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col span={8} className="mb-16">
+                    <Col span={10} className="mb-16">
                       <label htmlFor="" className="input-label">Child's mood on an average day<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
                     </Col>
-                    <Col span={16} className="mb-16">
+                    <Col span={14} className="mb-16">
                       <Form.Item>
                         <Slider
                           className="ability"
