@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import informationIcon from "../../../../assets/Images/information_icons.svg";
 import {
   Form,
   Button,
@@ -102,85 +103,87 @@ const Abilities = ({ match, Visible, onSuccess, data, handleBack }: any) => {
                 layout={"vertical"}
                 autoComplete="off"
               >
-                <Row>
-                  <Col span={12}>
-                    <label>Lists of strengths</label>
-                    <Form.Item>
-                      <Input name="strengths" onChange={handleChange} value={values.strengths} />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span={12}>
-                    <label>Lists of areas of improvement</label>
-                    <Form.Item>
-                      <Input name="improvement" onChange={handleChange} value={values.improvement} />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span={12}>
-                    <label>How to comfort if hurt, scared, worried</label>
-                    <Form.Item>
-                      <Input name="comfort" onChange={handleChange} value={values.comfort} />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span={10}>
-                    <label>Reading Level</label>
-                  </Col>
-                  <Col span={14}>
-                    <Form.Item>
-                      <Slider
-                        className="ability"
-                        marks={marks}
-                        value={values.readingLevel}
-                        included={false}
-                        onChange={(v) => {
-                          setFieldValue("readingLevel", v);
-                        }}
-                      />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span={10}>
-                    <label>Child's mood on an average day</label>
-                  </Col>
-                  <Col span={14}>
-                    <Form.Item>
-                      <Slider
-                        className="ability"
-                        marks={mood}
-                        value={values.mood}
-                        included={false}
-                        onChange={(v) => {
-                          setFieldValue("mood", v);
-                        }}
-                      />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <div className="stepper-buttons">
-                  <h5
-                    className="stepperBackh5"
-                    onClick={() => handleBack(data)}
-                  >
-                    Back
-                  </h5>
-                  <Button
-                    type="primary"
-                    className="stepper-button"
-                    onClick={() =>
-                      onSuccess({
-                        ...data,
-                        abilities: values,
-                      })
-                    }
-                  >
-                    Next
-                  </Button>
+                <div className="">
+                  <Row>
+                    <Col span={24} className="mb-16">
+                      <label htmlFor="" className="input-label">Lists of strengths<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
+                      <Form.Item>
+                        <Input name="strengths" onChange={handleChange} value={values.strengths} />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col span={24} className="mb-16">
+                      <label htmlFor="" className="input-label">Lists of areas of improvement<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
+                      <Form.Item>
+                        <Input name="improvement" onChange={handleChange} value={values.improvement} />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col span={24} className="mb-16">
+                      <label htmlFor="" className="input-label">How to comfort if hurt, scared, worried<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
+                      <Form.Item>
+                        <Input name="comfort" onChange={handleChange} value={values.comfort} />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col span={10} className="mb-16">
+                      <label htmlFor="" className="input-label">Reading Level<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
+                    </Col>
+                    <Col span={14} className="mb-16">
+                      <Form.Item>
+                        <Slider
+                          className="ability"
+                          marks={marks}
+                          value={values.readingLevel}
+                          included={false}
+                          onChange={(v) => {
+                            setFieldValue("readingLevel", v);
+                          }}
+                        />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col span={8} className="mb-16">
+                      <label htmlFor="" className="input-label">Child's mood on an average day<span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
+                    </Col>
+                    <Col span={16} className="mb-16">
+                      <Form.Item>
+                        <Slider
+                          className="ability"
+                          marks={mood}
+                          value={values.mood}
+                          included={false}
+                          onChange={(v) => {
+                            setFieldValue("mood", v);
+                          }}
+                        />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <div className="stepper-buttons">
+                    <h5
+                      className="stepperBackh5"
+                      onClick={() => handleBack(data)}
+                    >
+                      Back
+                    </h5>
+                    <Button
+                      type="primary"
+                      className="stepper-button"
+                      onClick={() =>
+                        onSuccess({
+                          ...data,
+                          abilities: values,
+                        })
+                      }
+                    >
+                      Next
+                    </Button>
+                  </div>
                 </div>
               </Form>
             </ConfigProvider>

@@ -91,7 +91,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                 <Row gutter={24}>
                   <Col span={12} className="mb-16">
                     <Form.Item rules={[{ required: true }]} >
-                    <label htmlFor="" className="input-label required-input">Select parent</label>
+                      <label htmlFor="" className="input-label required-input">Select parent</label>
                       <Select
                         className="select"
                         placeholder="Select"
@@ -113,7 +113,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                     <Row>
                       <div className="d-flex add-family">
                         <img src={plusBlue}></img>
-                        <p className="text-primary">Create new family</p> 
+                        <p className="text-primary">Create new family</p>
                       </div>
                     </Row>
                   </Col>
@@ -148,7 +148,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                 <Row>
                   <Col span={24} className="mb-16">
                     <Form.Item>
-                    <label htmlFor="" className="input-label required-input">Gender</label>
+                      <label htmlFor="" className="input-label required-input">Gender</label>
                       <Radio.Group
                         onChange={handleChange}
                         name="gender"
@@ -168,7 +168,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                 <Row>
                   <Col span={12} className="mb-16">
                     <Form.Item>
-                    <label htmlFor="" className="input-label required-input">Date of Birth</label>
+                      <label htmlFor="" className="input-label required-input">Date of Birth</label>
                       <DatePicker
                         className="date-picker"
                         name="dob"
@@ -183,7 +183,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                 <Row gutter={24}>
                   <Col span={12} className="mb-16">
                     <Form.Item colon={false} >
-                    <label htmlFor="" className="input-label required-input">School</label>
+                      <label htmlFor="" className="input-label required-input">School</label>
                       <Input
                         name="school"
                         value={values.school}
@@ -197,7 +197,7 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                   </Col>
                   <Col span={12} className="mb-16">
                     <Form.Item colon={false}>
-                    <label htmlFor="" className="input-label required-input">Grade</label>
+                      <label htmlFor="" className="input-label required-input">Grade</label>
                       <Input
                         name="grade"
                         value={values.grade}
@@ -211,30 +211,30 @@ const Basicinfo = ({ match, Visible, onSuccess, data }: any) => {
                   </Col>
                 </Row>
 
-               <div  className="footer-modal">
-                <div className="stepperNextButton">
-                  <Button
-                    type="primary"
-                    className="stepper-button"
-                    onClick={() => {
-                      validateForm().then((errors: any) => {
-                        if (Object.entries(errors).length === 0) {
-                          onSuccess({
-                            ...data,
-                            id: data?.id || uuidv4(),
-                            status: data?.status || "active",
-                            personalDetails: values,
-                          });
-                        } else {
-                          setTouched(errors);
-                        }
-                      });
-                    }}
-                  >
-                    Next
-                  </Button>
+                <div className="footer-modal">
+                  <div className="stepperNextButton">
+                    <Button
+                      type="primary"
+                      className="stepper-button"
+                      onClick={() => {
+                        validateForm().then((errors: any) => {
+                          if (Object.entries(errors).length === 0) {
+                            onSuccess({
+                              ...data,
+                              id: data?.id || uuidv4(),
+                              status: data?.status || "active",
+                              personalDetails: values,
+                            });
+                          } else {
+                            setTouched(errors);
+                          }
+                        });
+                      }}
+                    >
+                      Next
+                    </Button>
+                  </div>
                 </div>
-              </div>
               </Form>
             </ConfigProvider>
           </Layout>

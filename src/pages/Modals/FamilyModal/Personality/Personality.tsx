@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import informationIcon from "../../../../assets/Images/information_icons.svg";
 import {
   Form,
   Button,
@@ -89,7 +90,7 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
               >
                 <Row>
                   <Col span={12} className="mb-16">
-                    <label htmlFor="" className="input-label">Favorite Color <span>&#x1F6C8;</span></label>
+                    <label htmlFor="" className="input-label">Favorite Color <span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -101,7 +102,7 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                 </Row>
                 <Row>
                   <Col span={12} className="mb-16">
-                    <label htmlFor="" className="input-label">Personality Trait <span>&#x1F6C8;</span></label>
+                    <label htmlFor="" className="input-label">Personality Trait <span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -113,7 +114,7 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                 </Row>
                 <Row>
                   <Col span={12} className="mb-16">
-                    <label htmlFor="" className="input-label">Senitive Subjects</label>
+                    <label htmlFor="" className="input-label">Senitive Subjects <span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -125,7 +126,7 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                 </Row>
                 <Row>
                   <Col span={12} className="mb-16">
-                    <label htmlFor="" className="input-label">Favorite Subject</label>
+                    <label htmlFor="" className="input-label">Favorite Subject <span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}
@@ -137,7 +138,7 @@ const Personality = ({ match, Visible, onSuccess, handleBack, data }: any) => {
                 </Row>
                 <Row>
                   <Col span={12} className="mb-16">
-                    <label htmlFor="" className="input-label">Dislike Subjects</label>
+                    <label htmlFor="" className="input-label">Dislike Subjects <span className="information-icon"> <img src={informationIcon} alt="informationIcon" /></span></label>
                     <Form.Item>
                       <Input
                         onChange={handleChange}

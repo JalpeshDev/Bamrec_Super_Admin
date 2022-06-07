@@ -21,25 +21,25 @@ const GeneralSetting = ({ match }: any) => {
 
         <div>
             <h2 className='general-s-heading'>General Settings</h2>
-
-            <div className="switch-div">
-                <p className='switch-pra'>Set a phone number as a mandatory field</p>
-                <div className='switch-btn'>
-                    <Switch defaultChecked onChange={onChangetoggle} />
-                </div>
-            </div>
-
-
-            <div className="switch-div">
-                <p className='switch-pra'>Set an email as a mandatory field</p>
-                <div className='switch-btn'>
-                    <Switch defaultChecked onChange={onChangetoggle} />
-                </div>
-            </div>
-
-            <p className='pra-heading'>Default phone country code:</p>
-
-
+            <Row>
+                <Col>
+                    <div className="switch-div">
+                        <p className='switch-pra'>Set a phone number as a mandatory field</p>
+                        <div className='switch-btn'>
+                            <Switch defaultChecked onChange={onChangetoggle} />
+                        </div>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="switch-div">
+                        <p className='switch-pra'>Set an email as a mandatory field</p>
+                        <div className='switch-btn'>
+                            <Switch defaultChecked onChange={onChangetoggle} />
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+            <h5 className='pra-heading'>Default phone country code:</h5>
             <Select
                 className={'dropdown-setting'}
                 placeholder="Identify country code by user’s IP address"

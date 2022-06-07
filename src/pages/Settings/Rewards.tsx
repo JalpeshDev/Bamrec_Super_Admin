@@ -21,20 +21,20 @@ const Rewards = ({ match, rewardsData, datacontainer }: any) => {
   };
   return (
     <div>
-      <h2 className='general-s-heading'>Rewards</h2>
+      <h2 className='mb-20'>Rewards</h2>
       <div>
-        <p className='pra-heading'>Add the details of kids rewards.</p>
+        <p className='pra-heading gary-text'>Add the details of kids rewards.</p>
       </div>
       {data.length != 0 ? (
         <Row>
           <Col span={8}>
-            <div className='rewards-card'  onClick={() => {
-                    setModalVisible(true);
-                    setCurrentData([])
-                  }}>
+            <div className='rewards-card' onClick={() => {
+              setModalVisible(true);
+              setCurrentData([])
+            }}>
               <a>
                 <img src={addRewards}
-                 
+
                 />New reward</a>
             </div>
           </Col>
@@ -56,15 +56,15 @@ const Rewards = ({ match, rewardsData, datacontainer }: any) => {
                     </div>
                     <div className='d-flex'>
                       <div className='rewards-switch-toggle'>
-                        <Switch defaultChecked 
-                          onChange={onChange} 
+                        <Switch defaultChecked
+                          onChange={onChange}
                         />
                       </div>
                       <div
-                      onClick={() => {
-                        setModalVisible(true);
-                        setCurrentData([])
-                      }}>
+                        onClick={() => {
+                          setModalVisible(true);
+                          setCurrentData([])
+                        }}>
                         <p className='rewards-edit-btn'><a href="">edit</a></p>
                       </div>
                     </div>
@@ -78,11 +78,7 @@ const Rewards = ({ match, rewardsData, datacontainer }: any) => {
       ) :
         (<div>
           <Button
-            style={{
-              backgroundColor: '#2BA7CA',
-              borderRadius: '8px',
-              color: 'white'
-            }}
+            className={"blue-btn"}
             onClick={() => {
               setModalVisible(true);
               setCurrentData([])

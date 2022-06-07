@@ -19,7 +19,7 @@
 }
 
 body {
-  background-color: #f0f2f5;
+  background-color: #ffffff;
 }
 
 .site-layout-content {
@@ -175,7 +175,10 @@ h5 {
   font-family: "Poppins";
   font-size: 14px;
   color: #000229;
+  line-height: 21px;
 }
+
+
 
 /* Font-weight */
 
@@ -255,13 +258,17 @@ h5 {
 
 /* margin css/ spacing */
 
+.mb-20{
+  margin-bottom: 20px;
+}
+
 .mb-16{
   margin-bottom: 16px;
 }
 
 .m-auto {
   margin: auto !important
-}
+} 
 
 .mx-auto {
   margin-right: auto !important;
